@@ -2,10 +2,9 @@ from django.db import models
 from user.models import User
 # Create your models here.
 
-class PhoneNmuber(models.Model):
+class PhoneNumber(models.Model):
     phone_number=models.PositiveIntegerField(null=True,blank=True)
-    def __str__(self):
-        return self.phone_number
+
 
 
     class Meta:
@@ -15,8 +14,6 @@ class PhoneNmuber(models.Model):
 class Course(models.Model):
     kurs_number=models.PositiveIntegerField(null=True, blank=True)
 
-    def __str__(self):
-        return self.kurs
 
 
     class Meta:
@@ -24,11 +21,7 @@ class Course(models.Model):
         verbose_name_plural='Курсы'
 
 class Faculty(models.Model):
-    faculty_number=models.PositiveIntegerField(null=True,blank=True)
-
-    def __str__(self):
-        return self.faculty_number
-
+    faculty_number=models.CharField(max_length=100)
 
     class Meta:
         verbose_name='Факультет'
@@ -36,9 +29,6 @@ class Faculty(models.Model):
 
 class Direction(models.Model):
     direction_name=models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.direction_name
 
 
     class Meta:
@@ -48,9 +38,6 @@ class Direction(models.Model):
 class Room(models.Model):
     room_number=models.PositiveIntegerField(null=True,blank=True)
 
-    def __str__(self):
-        return self.room_number
-
 
     class Meta:
         verbose_name='Номер комнаты'
@@ -58,25 +45,25 @@ class Room(models.Model):
 
 
 class student(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,
+                              related_name='student')
     first_name=models.CharField(max_length=100)
     second_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50, null=True)
+    middle_name = models.CharField(max_length=50, null=True)
     age = models.PositiveIntegerField(null=True, blank=True)
-    telephone_number = models.ForeignKey(PhoneNmuber, on_delete=models.CASCADE)
+    telephone_number = models.CharField(max_length=100, unique=True)
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     direction = models.ForeignKey(Direction, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
 
-    def __str__(self):
-        return self.user
+
 
 
     class Meta:
         verbose_name='Студент'
         verbose_name_plural='Студенты'
 
-
+        db_table='student'
 
