@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'user',
     'abiturient',
     'student',
+    'footer_project',
+    'General_education_system',
     #REST API
     'api',
     'rest_framework'
