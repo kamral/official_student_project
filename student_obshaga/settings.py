@@ -90,7 +90,7 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'NAME': 'std_obsh_officials2'
+        'NAME': 'db_std_door2'
 
     }
 }

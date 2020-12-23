@@ -1,41 +1,53 @@
 from rest_framework import serializers
 from user.models import User
 from student.models import\
-    student,PhoneNumber,\
+    Student,\
     Course,\
     Faculty,\
     Direction,\
     Room
 
 
-class PhoneNumberSerializers(serializers.ModelSerializer):
-
-    class Meta:
-        model=PhoneNumber
 
 
 class CourseSerializers(serializers.ModelSerializer):
     class Meta:
         model = Course
+        fields=('kurs_number',)
 
 
 class FacultySerializers(serializers.ModelSerializer):
     class Meta:
         model = Faculty
+        fields=('faculty_number',)
 
 
 class DirectionSerializers(serializers.ModelSerializer):
+    direction_name=serializers.CharField(required=True)
+
     class Meta:
-        model = Direction
+        model=Direction
+        fields=('direction_name',)
 
 
 class RoomSerializers(serializers.ModelSerializer):
+    room_number = serializers.IntegerField(required=True)
+    student_name = serializers.PrimaryKeyRelatedField(queryset=Room.objects)
+    student_photo = serializers.ImageField(required=True)
     class Meta:
         model = Room
+        fields=('room_number','student_name','student_photo',)
+
+
+class Dorm_roomSerializers(serializers.ModelSerializer):
+    address=serializers.CharField(required=True)
+    dorm_building=serializers.IntegerField(required=True)
+    number_room=serializers.PrimaryKeyRelatedField(queryset=Room.objects)
+    floor=serializers.IntegerField(required=True)
 
 class UserStudentSerializer(serializers.ModelSerializer):
     class Meta:
-        model=student
+        model=Student
         fields=('first_name','second_name','middle_name','age',
                 'telephone_number','faculty','course',
                 'direction','room')
@@ -54,7 +66,7 @@ class StudentRegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         student_data=validated_data.pop('student')
         user=User.objects.create_user(**validated_data)
-        student.objects.create(
+        Student.objects.create(
             user=user,
             first_name=student_data['first_name'],
             last_name=student_data['last_name'],
