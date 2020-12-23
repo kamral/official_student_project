@@ -31,7 +31,8 @@ class Direction(models.Model):
 
 class Room(models.Model):
     room_number=models.PositiveIntegerField(null=True,blank=True)
-    student_name=models.ForeignKey('Student',on_delete=models.CASCADE)
+    student_name=models.CharField(max_length=100)
+    # student_name=models.ForeignKey('Student',on_delete=models.CASCADE)
     student_photo=models.ImageField(verbose_name='Фото студента')
 
 

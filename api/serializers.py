@@ -5,7 +5,7 @@ from student.models import\
     Course,\
     Faculty,\
     Direction,\
-    Room
+    Room,Dorm_room
 
 
 
@@ -40,10 +40,17 @@ class RoomSerializers(serializers.ModelSerializer):
 
 
 class Dorm_roomSerializers(serializers.ModelSerializer):
-    address=serializers.CharField(required=True)
-    dorm_building=serializers.IntegerField(required=True)
-    number_room=serializers.PrimaryKeyRelatedField(queryset=Room.objects)
-    floor=serializers.IntegerField(required=True)
+
+    number_room=RoomSerializers(many=True)
+
+    # address=serializers.CharField(required=True)
+    # dorm_building=serializers.IntegerField(required=True)
+    # # number_room=serializers.PrimaryKeyRelatedField(queryset=Room.objects)
+    # floor=serializers.IntegerField(required=True)
+
+    class Meta:
+        model=Dorm_room
+        fields='__all__'
 
 class UserStudentSerializer(serializers.ModelSerializer):
     class Meta:
