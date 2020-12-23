@@ -32,7 +32,7 @@ class DirectionSerializers(serializers.ModelSerializer):
 
 class RoomSerializers(serializers.ModelSerializer):
     room_number = serializers.IntegerField(required=True)
-    student_name = serializers.PrimaryKeyRelatedField(queryset=Room.objects)
+    student_name = serializers.CharField(required=True)
     student_photo = serializers.ImageField(required=True)
     class Meta:
         model = Room
@@ -41,16 +41,16 @@ class RoomSerializers(serializers.ModelSerializer):
 
 class Dorm_roomSerializers(serializers.ModelSerializer):
 
-    number_room=RoomSerializers(many=True)
+    number_room=RoomSerializers(required=True)
 
-    # address=serializers.CharField(required=True)
-    # dorm_building=serializers.IntegerField(required=True)
-    # # number_room=serializers.PrimaryKeyRelatedField(queryset=Room.objects)
-    # floor=serializers.IntegerField(required=True)
+    address=serializers.CharField(required=True)
+    dorm_building=serializers.IntegerField(required=True)
+    # number_room=serializers.PrimaryKeyRelatedField(queryset=Room.objects)
+    floor=serializers.IntegerField(required=True)
 
     class Meta:
         model=Dorm_room
-        fields='__all__'
+        fields=('number_room','address','dorm_building','floor',)
 
 class UserStudentSerializer(serializers.ModelSerializer):
     class Meta:
