@@ -9,16 +9,18 @@ from .models import Student,\
     Course,\
     Faculty,Dorm_room
 
-class NotebookAdminForm(ModelForm):
+class BaseAdminForm(ModelForm):
+   # минимальное разрешение для фотов комнате
     min_resolution=(400,400)
+   # максимлаьное разрешение для фото в комнате
     max_resolution=(2400,1200)
 
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
-        self.fields['image'].help_text='Загружайте изображение с мин разрешением {} x {}'.format(*self.min_resolution)
+        self.fields['student_photo'].help_text='Загружайте изображение с мин разрешением {} x {}'.format(*self.min_resolution)
 
     def clean_image(self):
-        image=self.cleaned_data['image']
+        image=self.cleaned_data['student_photo']
         img=Image.open(image)
         # print(img.heigt,img.width)
         min_height, min_width=self.min_resolution
@@ -27,8 +29,12 @@ class NotebookAdminForm(ModelForm):
         return image
 
 
+class RoomAdmin(admin.ModelAdmin):
+    form=BaseAdminForm
+
+
 admin.site.register(Student)
-admin.site.register(Room)
+admin.site.register(Room,RoomAdmin)
 admin.site.register(Direction)
 admin.site.register(Course)
 admin.site.register(Faculty)

@@ -1,6 +1,7 @@
 from django.db import models
 from user.models import User
 # Create your models here.
+from PIL import Image
 
 
 
@@ -24,16 +25,35 @@ class Faculty(models.Model):
 class Direction(models.Model):
     direction_name=models.CharField(max_length=100)
 
+class MinResolutionErrorException(Exception):
+    pass
+
+class MaxResolutionErrorException(Exception):
+    pass
 
     class Meta:
         verbose_name='Направление'
         verbose_name_plural='Направления'
 
 class Room(models.Model):
+    min_resolution = (400, 400)
+    max_resolution = (2400, 1200)
+    MAX_IMAGE_SIZE = 3174534
+
     room_number=models.PositiveIntegerField(null=True,blank=True)
     student_name=models.CharField(max_length=100)
     # student_name=models.ForeignKey('Student',on_delete=models.CASCADE)
     student_photo=models.ImageField(verbose_name='Фото студента')
+
+    def save(self, *args,**kwargs):
+        image=self.image
+        img=Image.open(image)
+        min_height, min_width = self.min_resolution
+        max_height, max_width = self.max_resolution
+        if img.height < min_height or img.width < min_width:
+            raise MinResolutionErrorException('Загруженное изображение меньше положенного')
+        # if img.height > max_height or img.width > max_width:
+        #     raise MaxResolutionErrorException('Загруженное изображение выше положенного')
 
 
     class Meta:
