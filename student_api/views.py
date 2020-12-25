@@ -45,9 +45,6 @@ class DirectionFacultyApiView(generics.ListCreateAPIView):
     queryset = Direction.objects.all()
 
 
-class DirectionFacultyApiView(generics.ListCreateAPIView):
-    serializer_class = DirectionSerializers
-    queryset = Direction.objects.all()
 
 
 class DoorRoomApiView(generics.ListCreateAPIView):

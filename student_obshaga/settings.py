@@ -43,11 +43,18 @@ INSTALLED_APPS = [
     'footer_project',
     'General_education_system',
     #REST API
-    'api',
+    'student_api',
     'rest_framework'
 
 ]
 AUTH_USER_MODEL='user.User'
+
+# в каждом вью в нашем проекте будет использован дефолтный класс пагинации(PageNumberPagination)
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # количество объектов на странице
+    'PAGE_SIZE': 2
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,7 +97,7 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'NAME': 'db_std_door_3'
+        'NAME': 'db_std_door_8'
 
     }
 }

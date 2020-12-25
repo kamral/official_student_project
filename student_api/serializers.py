@@ -31,9 +31,9 @@ class DirectionSerializers(serializers.ModelSerializer):
 
 
 class RoomSerializers(serializers.ModelSerializer):
-    room_number = serializers.IntegerField(required=True)
-    student_name = serializers.CharField(required=True)
-    student_photo = serializers.ImageField(required=True)
+    # room_number = serializers.IntegerField(required=True)
+    # student_name = serializers.CharField(required=True)
+    # student_photo = serializers.ImageField(required=True)
     class Meta:
         model = Room
         fields=('room_number','student_name','student_photo',)
@@ -57,7 +57,7 @@ class UserStudentSerializer(serializers.ModelSerializer):
         model=Student
         fields=('first_name','second_name','middle_name','age',
                 'telephone_number','faculty','course',
-                'direction','room')
+                'direction','dorm_room')
 
 
 
@@ -76,13 +76,13 @@ class StudentRegisterSerializer(serializers.ModelSerializer):
         Student.objects.create(
             user=user,
             first_name=student_data['first_name'],
-            last_name=student_data['last_name'],
+            second_name=student_data['second_name'],
             age=student_data['age'],
             telephone_number=student_data['telephone_number'],
             faculty=student_data['faculty'],
             course=student_data['course'],
             direction=student_data['direction'],
-            room=student_data['room']
+            dorm_room=['dorm_room']
         )
 
         return user
