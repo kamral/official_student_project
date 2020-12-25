@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .serializers import StudentRegisterSerializer,\
-    CourseSerializers,FacultySerializers,DirectionSerializers,Dorm_roomSerializers
+    CourseSerializers,FacultySerializers,DirectionSerializers,\
+    Dorm_roomSerializers,UniversitySerializer
 # Create your views here.
-
+from General_education_system.models import *
 from student.models import *
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -63,12 +64,10 @@ class DirectionFacultyApiView(generics.ListCreateAPIView):
     pagination_class=DirectionPagination
 
 
-
-
-
-
-
-
 class DoorRoomApiView(generics.ListCreateAPIView):
     serializer_class = Dorm_roomSerializers
     queryset = Dorm_room.objects.all()
+
+class UniversityApiView(generics.ListCreateAPIView):
+    serializer_class = UniversitySerializer
+    queryset = University.objects.all()

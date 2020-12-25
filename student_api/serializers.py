@@ -6,6 +6,7 @@ from student.models import\
     Faculty,\
     Direction,\
     Room,Dorm_room
+from General_education_system.models import University,BaseModel
 
 
 
@@ -52,6 +53,35 @@ class Dorm_roomSerializers(serializers.ModelSerializer):
         model=Dorm_room
         fields=('number_room','address','dorm_building','floor',)
 
+
+
+class UniversitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=BaseModel
+        fields=('name','address','date_of_foundation','course',
+                'filial','Faculty','direction',
+                'Dorm_room')
+class CollegeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=BaseModel
+        fields=('name','address','date_of_foundation','course',
+                'filial','Faculty','direction',
+                'Dorm_room')
+
+class GymnasiumSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=BaseModel
+        fields=('name','address','date_of_foundation','course',
+                'filial','Faculty','direction',
+                'Dorm_room')
+
+class AcademicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=BaseModel
+        fields=('name','address','date_of_foundation','course',
+                'filial','Faculty','direction',
+                'Dorm_room')
+
 class UserStudentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Student
@@ -82,7 +112,7 @@ class StudentRegisterSerializer(serializers.ModelSerializer):
             faculty=student_data['faculty'],
             course=student_data['course'],
             direction=student_data['direction'],
-            dorm_room=['dorm_room']
+            dorm_room=student_data['dorm_room']
         )
 
         return user

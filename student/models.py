@@ -55,7 +55,7 @@ class Student(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     direction = models.ForeignKey(Direction, on_delete=models.CASCADE)
-    dorm_room=models.ForeignKey(Dorm_room,on_delete=models.CASCADE,verbose_name='Название общежития')
+    dorm_room=models.ForeignKey(Dorm_room,on_delete=models.CASCADE)
 
 
 
