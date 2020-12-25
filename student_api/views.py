@@ -12,7 +12,8 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from rest_framework.pagination import PageNumberPagination
-
+from rest_framework.response import Response
+from collections import OrderedDict
 
 
 class StudentRegistrationApiView(generics.CreateAPIView):
@@ -48,10 +49,20 @@ class DirectionPagination(PageNumberPagination):
     page_query_param = 'page_size'
     max_page_size = 10
 
+    def get_paginated_response(self, data):
+        return Response(OrderedDict([
+            ('колчество объектов', self.page.paginator.count),
+            ('следующий', self.get_next_link()),
+            ('предыдущий', self.get_previous_link()),
+            ('результат', data)
+        ]))
+
 class DirectionFacultyApiView(generics.ListCreateAPIView):
     serializer_class = DirectionSerializers
     queryset = Direction.objects.all()
     pagination_class=DirectionPagination
+
+
 
 
 
