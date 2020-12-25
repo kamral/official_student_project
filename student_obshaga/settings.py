@@ -50,11 +50,11 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL='user.User'
 
 # в каждом вью в нашем проекте будет использован дефолтный класс пагинации(PageNumberPagination)
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # количество объектов на странице
-    'PAGE_SIZE': 2
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#     # количество объектов на странице
+#     'PAGE_SIZE': 2
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

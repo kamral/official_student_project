@@ -11,6 +11,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
 
+from rest_framework.pagination import PageNumberPagination
+
+
 
 class StudentRegistrationApiView(generics.CreateAPIView):
     serializer_class = StudentRegisterSerializer
@@ -39,10 +42,18 @@ class FacultyApiView(generics.ListCreateAPIView):
     serializer_class = FacultySerializers
     queryset = Faculty.objects.all()
 
+# создаем пагинаию на уровне модели
+class DirectionPagination(PageNumberPagination):
+    page_size = 2
+    page_query_param = 'page_size'
+    max_page_size = 10
 
 class DirectionFacultyApiView(generics.ListCreateAPIView):
     serializer_class = DirectionSerializers
     queryset = Direction.objects.all()
+    pagination_class=DirectionPagination
+
+
 
 
 
