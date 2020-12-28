@@ -19,7 +19,7 @@ class BaseModel(models.Model):
 
 
 
-class University(models.Model):
+class University(BaseModel):
     pass
 
 class Colledge(models.Model):

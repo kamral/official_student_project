@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .serializers import StudentRegisterSerializer,\
     CourseSerializers,FacultySerializers,DirectionSerializers,\
-    Dorm_roomSerializers,UniversitySerializer
+    Dorm_roomSerializers
 # Create your views here.
 from General_education_system.models import *
 from student.models import *
@@ -68,6 +68,3 @@ class DoorRoomApiView(generics.ListCreateAPIView):
     serializer_class = Dorm_roomSerializers
     queryset = Dorm_room.objects.all()
 
-class UniversityApiView(generics.ListCreateAPIView):
-    serializer_class = UniversitySerializer
-    queryset = University.objects.all()

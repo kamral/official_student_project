@@ -3,7 +3,7 @@ from .views import StudentRegistrationApiView,\
     CourseApiView,\
     FacultyApiView,\
     DirectionFacultyApiView,\
-    DoorRoomApiView,UniversityApiView
+    DoorRoomApiView
 
 
 urlpatterns=[
@@ -13,5 +13,4 @@ urlpatterns=[
     path('faculty/',FacultyApiView.as_view()),
     path('direction/', DirectionFacultyApiView.as_view()),
     path('dooroom/',DoorRoomApiView.as_view()),
-    path('university/',UniversityApiView.as_view())
 ]

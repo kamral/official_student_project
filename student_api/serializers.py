@@ -55,32 +55,6 @@ class Dorm_roomSerializers(serializers.ModelSerializer):
 
 
 
-class UniversitySerializer(serializers.ModelSerializer):
-    class Meta:
-        model=BaseModel
-        fields=('name','address','date_of_foundation','course',
-                'filial','Faculty','direction',
-                'Dorm_room')
-class CollegeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=BaseModel
-        fields=('name','address','date_of_foundation','course',
-                'filial','Faculty','direction',
-                'Dorm_room')
-
-class GymnasiumSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=BaseModel
-        fields=('name','address','date_of_foundation','course',
-                'filial','Faculty','direction',
-                'Dorm_room')
-
-class AcademicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=BaseModel
-        fields=('name','address','date_of_foundation','course',
-                'filial','Faculty','direction',
-                'Dorm_room')
 
 class UserStudentSerializer(serializers.ModelSerializer):
     class Meta:
