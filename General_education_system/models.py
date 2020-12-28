@@ -11,10 +11,10 @@ class BaseModel(models.Model):
     address = models.CharField(max_length=100)
     date_of_foundation = models.DateTimeField(auto_now_add=True, )
     filial = models.CharField(max_length=100, verbose_name='Филиал университета', blank=True)
-    course=models.ForeignKey(Course,on_delete=models.CASCADE)
-    Faculty=models.ForeignKey(Faculty,on_delete=models.CASCADE)
-    direction=models.ForeignKey(Direction,on_delete=models.CASCADE)
-    Dorm_room=models.ForeignKey(Dorm_room,on_delete=models.CASCADE)
+    # course=models.ForeignKey(Course,on_delete=models.CASCADE)
+    # Faculty=models.ForeignKey(Faculty,on_delete=models.CASCADE)
+    # direction=models.ForeignKey(Direction,on_delete=models.CASCADE)
+    # Dorm_room=models.ForeignKey(Dorm_room,on_delete=models.CASCADE)
 
 
 

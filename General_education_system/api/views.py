@@ -33,4 +33,4 @@ class UniversityPagination(PageNumberPagination):
 class UniversityApiView(ListCreateAPIView):
     queryset = University.objects.all()
     serializer_class = UniversitySerializers
-    # pagination_class = UniversityPagination
+    pagination_class = UniversityPagination
