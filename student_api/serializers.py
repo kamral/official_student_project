@@ -6,7 +6,7 @@ from student.models import\
     Faculty,\
     Direction,\
     Room,Dorm_room
-from General_education_system.models import University,BaseModel
+
 
 
 

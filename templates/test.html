@@ -1,0 +1,34 @@
+{%extends 'education/base.html' %}
+
+{%block content%}
+  {%for item in education%}
+            <div class="card text mb-3">
+                <div class="card-header">
+                    Категория :{{item.category}}
+                </div>
+                <div class="card-body">
+                    {%if item.Image%}
+                    <img src="{{item.Image}}" alt=""
+                         width="300" height="250" class="mr-3">
+                    {%else%}
+                    <img src="https://fotki.ykt.ru/albums/userpics/23871/93764221.jpg"
+                         width="300" height="250" class="mr-3">
+                    {%endif%}
+                    <div class="media-body">
+                        <h5 class="card-title"> Название университета: {{item.name}}</h5>
+                        <p class="card-text">История университета: {{item.history_of_university|safe|linebreaks|truncatewords:40}}</p>
+                        <a href="#" class="btn btn-primary">Read more</a>
+                        <p class="card-text">Адрес: {{item.address}}</p>
+
+
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    {{item.created_at|date:'Y-m-d H:i'}}
+                </div>
+            </div>
+            {%empty%}
+            ooops
+  {%endfor%}
+
+{%endblock%}
