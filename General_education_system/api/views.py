@@ -34,3 +34,27 @@
 #     queryset = University.objects.all()
 #     serializer_class = UniversitySerializers
 #     pagination_class = UniversityPagination
+
+
+from .serilaizers import CategorySerializers,GeneralEducationSystemSerializers
+from rest_framework import generics
+from General_education_system.models import\
+    General_education_system,Category_education
+
+class CategoryApiView(generics.ListCreateAPIView):
+    queryset =Category_education.objects.all()
+    serializer_class = CategorySerializers
+
+class CategoryUpdateApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category_education.objects.all()
+    serializer_class = CategorySerializers
+
+
+class GeneralEducationApiView(generics.ListCreateAPIView):
+    queryset = General_education_system.objects.all()
+    serializer_class = GeneralEducationSystemSerializers
+
+
+class GeneralUpdateApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = General_education_system.objects.all()
+    serializer_class = GeneralEducationSystemSerializers
