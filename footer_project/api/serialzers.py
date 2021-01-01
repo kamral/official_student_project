@@ -16,14 +16,13 @@ class AboutUsSerializers(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.title=validated_data.get('title',instance.title)
         instance.body=validated_data.get('body',instance.body)
-        instance.date_of_foundation=validated_data.get('date_of_foundation',
-                                                       instance.date_of_foundation)
+        instance.date_of_foundation=validated_data.get('date_of_foundation',instance.date_of_foundation)
         instance.save()
         return instance
 
     class Meta:
         model=AboutUs
-        fields=('title','body','date_of_foundation')
+        fields=('title','body','date_of_foundation',)
 
 
 
@@ -36,7 +35,7 @@ class ContactsSerializers(serializers.ModelSerializer):
     support_service=serializers.CharField()
 
     def create(self, validated_data):
-        contact=Contacts.objetcs.all()
+        contact=Contacts.objects.all()
         return contact
 
     def update(self, instance, validated_data):
@@ -72,16 +71,31 @@ class AboutCompanySerializers(serializers.ModelSerializer):
             model=AboutCompany
             fields=('about_company','contacts',)
 
-class StudentHelpInformation(models.Model):
-    title=models.CharField(max_length=100,verbose_name='Заголовок')
-    body=models.TextField(verbose_name='Текст')
-    created_at=models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
 
 
-class AbiturientHelpInformation(serializers.ModelSerializer):
+class StudentHelpInformationSerializers(serializers.ModelSerializer):
+    title=serializers.CharField()
+    body=serializers.CharField()
+    created_at=serializers.DateTimeField()
+
+    def create(self, validated_data):
+        student_help_information=StudentHelpInformation.objects.all()
+        return student_help_information
+
+    def update(self, instance, validated_data):
+        instance.title=validated_data.get('title', instance.title)
+        instance.body=validated_data.get('body', instance.body)
+        instance.created_at=validated_data.get('created_at', instance.created_at)
+        instance.save()
+        return instance
+
+    class Meta:
+        model=StudentHelpInformation
+        fields=('title','body','created_at')
+
+
+
+class AbiturientHelpInformationSerializers(serializers.ModelSerializer):
     title=serializers.CharField()
     body=serializers.CharField()
     created_at=serializers.DateTimeField()
@@ -100,9 +114,10 @@ class AbiturientHelpInformation(serializers.ModelSerializer):
         fields=('title','body','created_at',)
 
 
+
 class OportunitiesSerializers(serializers.ModelSerializer):
     student_information=serializers.PrimaryKeyRelatedField(queryset=StudentHelpInformation.objects.all())
-    abiturient_information=serializers.PrimaryKeyRelatedField(queryset=AboutUsSerializers.objects.all())
+    abiturient_information=serializers.PrimaryKeyRelatedField(queryset=AbiturientHelpInformation.objects.all())
 
     def create(self, validated_data):
         ourpartners=Ourpartners.objects.all()

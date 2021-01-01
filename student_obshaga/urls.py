@@ -26,6 +26,7 @@ urlpatterns = [
     path('general_education_system/',
          include('General_education_system.urls')),
 
+    path('footer_project/api/', include('footer_project.api.urls'))
 
 ]
 
