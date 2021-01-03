@@ -26,7 +26,7 @@ urlpatterns = [
     path('general_education_system/',
          include('footer_project.urls')),
 
-    # path('footer_project/api/', include('footer_project.api.urls'))
+    path('footer_project/api/', include('footer_project.api.urls'))
 
 ]
 

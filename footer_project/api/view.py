@@ -1,68 +1,54 @@
 from .serialzers import \
-    AboutUsSerializers,\
-    ContactsSerializers,\
     AboutCompanySerializers,\
-    QuestionSerializers,\
-    AnswerSerializers,\
+    AboutCompany_CategorySerializers,\
+    Ourpartners_categorySerializers,\
+    OurpartnersSerializers,\
     OportunitiesSerializers,\
-    OurpartnersSerializers
+    Opportunities_category
 from rest_framework.generics import\
     ListCreateAPIView,\
     RetrieveUpdateDestroyAPIView
 
-from footer_project.models import\
-    AboutUs,\
-    Contacts,\
+from footer_project.models import \
     AboutCompany,\
-    Questions,\
-    Answers,\
+    About_Company_Category,\
+    Ourpartners,\
+    Ourpartners_category,\
     Oportunities,\
-    Ourpartners
-
-class AboutUsApiView(ListCreateAPIView):
-    serializer_class = AboutUsSerializers
-    queryset = AboutUs.objects.all()
-
-class AboutUsUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = AboutUsSerializers
-    queryset = AboutUs.objects.all()
-
-
-class ContactApiView(ListCreateAPIView):
-    serializer_class = ContactsSerializers
-    queryset = Contacts.objects.all()
-
-class ContactUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = ContactsSerializers
-    queryset = Contacts.objects.all()
-
+    Opportunities_category
 
 class AboutCompanyApiView(ListCreateAPIView):
     serializer_class = AboutCompanySerializers
     queryset = AboutCompany.objects.all()
 
 class AboutCompanyUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = AboutCompanySerializers
+    serializer_class = AboutCompany
     queryset = AboutCompany.objects.all()
 
 
-class QuestionApiView(ListCreateAPIView):
-    serializer_class = QuestionSerializers
-    queryset = Questions.objects.all()
+class AboutCompanyCategoryApiView(ListCreateAPIView):
+    serializer_class = AboutCompany_CategorySerializers
+    queryset = About_Company_Category.objects.all()
 
-class QuestionUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = QuestionSerializers
-    queryset = Questions.objects.all()
+class AboutCompanyCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = AboutCompany_CategorySerializers
+    queryset = About_Company_Category.objects.all()
 
+class OurpartnersApiView(ListCreateAPIView):
+    serializer_class = OurpartnersSerializers
+    queryset = Ourpartners.objects.all()
 
-class AnswerApiView(ListCreateAPIView):
-    serializer_class = AnswerSerializers
-    queryset = Answers.objects.all()
+class OurpartnersUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = OurpartnersSerializers
+    queryset = Ourpartners.objects.all()
 
+class OurpartnersCategoryApiView(ListCreateAPIView):
+    serializer_class = Ourpartners_categorySerializers
+    queryset = Ourpartners_category.objects.all()
 
-class AnswerUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = AnswerSerializers
-    queryset = Answers.objects.all()
+class OurpartnersCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = Ourpartners_categorySerializers
+    queryset = Ourpartners_category.objects.all()
 
 
 class OportunitiesApiView(ListCreateAPIView):
@@ -74,10 +60,11 @@ class OportunitiesUpdateApiView(RetrieveUpdateDestroyAPIView):
     queryset = Oportunities.objects.all()
 
 
-class OurpartnersApiView(ListCreateAPIView):
-    serializer_class = OportunitiesSerializers
-    queryset = Oportunities.objects.all()
+class OportunitiesCategoryApiView(ListCreateAPIView):
+    serializer_class = Opportunities_category
+    queryset = Opportunities_category.objects.all()
 
-class OurpartnersUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = OportunitiesSerializers
-    queryset = Oportunities.objects.all()
+class OportunitiesCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = Opportunities_category
+    queryset = Opportunities_category.objects.all()
+
