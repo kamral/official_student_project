@@ -21,10 +21,10 @@ class AboutCompanySerializers(serializers.ModelSerializer):
 
 
     class Meta:
-        mdoel=AboutCompany
+        model=AboutCompany
         fields=('title','body','date_of_foundation','ceo_manager',
-                'backend_manager','frontent_manager','support_service',
-                'category')
+                'backend_developer','frontent_developer','support_service',
+                'category',)
 
 
 class AboutCompany_CategorySerializers(serializers.ModelSerializer):
@@ -80,11 +80,6 @@ class OurpartnersSerializers(serializers.ModelSerializer):
         fields=('name','address','category')
 
 
-class Ourpartners_category(models.Model):
-    name=models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 class Ourpartners_categorySerializers(serializers.ModelSerializer):
     name=serializers.CharField()
