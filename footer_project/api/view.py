@@ -2,8 +2,8 @@ from .serialzers import \
     AboutUsSerializers,\
     ContactsSerializers,\
     AboutCompanySerializers,\
-    StudentHelpInformationSerializers,\
-    AbiturientHelpInformationSerializers,\
+    QuestionSerializers,\
+    AnswerSerializers,\
     OportunitiesSerializers,\
     OurpartnersSerializers
 from rest_framework.generics import\
@@ -14,8 +14,8 @@ from footer_project.models import\
     AboutUs,\
     Contacts,\
     AboutCompany,\
-    StudentHelpInformation,\
-    AbiturientHelpInformation,\
+    Questions,\
+    Answers,\
     Oportunities,\
     Ourpartners
 
@@ -46,23 +46,23 @@ class AboutCompanyUpdateApiView(RetrieveUpdateDestroyAPIView):
     queryset = AboutCompany.objects.all()
 
 
-class StudentHelpInformationApiView(ListCreateAPIView):
-    serializer_class = StudentHelpInformationSerializers
-    queryset = StudentHelpInformation.objects.all()
+class QuestionApiView(ListCreateAPIView):
+    serializer_class = QuestionSerializers
+    queryset = Questions.objects.all()
 
-class StudentHelpInformationUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = StudentHelpInformationSerializers
-    queryset = StudentHelpInformation.objects.all()
-
-
-class AbiturientInformationApiView(ListCreateAPIView):
-    serializer_class = AbiturientHelpInformationSerializers
-    queryset = AbiturientHelpInformation.objects.all()
+class QuestionUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = QuestionSerializers
+    queryset = Questions.objects.all()
 
 
-class AbiturientInformationUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = AbiturientHelpInformationSerializers
-    queryset = AbiturientHelpInformation.objects.all()
+class AnswerApiView(ListCreateAPIView):
+    serializer_class = AnswerSerializers
+    queryset = Answers.objects.all()
+
+
+class AnswerUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = AnswerSerializers
+    queryset = Answers.objects.all()
 
 
 class OportunitiesApiView(ListCreateAPIView):

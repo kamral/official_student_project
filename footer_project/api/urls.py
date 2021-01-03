@@ -6,8 +6,8 @@ from .view import \
     ContactUpdateApiView,\
     AboutCompanyApiView,\
     AboutCompanyUpdateApiView,\
-    AbiturientInformationApiView,\
-    AbiturientInformationUpdateApiView,\
+    AnswerApiView,\
+    QuestionApiView,\
     OportunitiesApiView,\
     OportunitiesUpdateApiView,OurpartnersApiView,OurpartnersUpdateApiView
 
@@ -19,8 +19,8 @@ urlpatterns=[
     path('contacts/<int:pk>/',ContactUpdateApiView.as_view()),
     path('about_company/',AboutCompanyApiView.as_view()),
     path('about_company/<int:pk>/',AboutCompanyUpdateApiView.as_view()),
-    path('abiturient_help_information/',AbiturientInformationApiView.as_view()),
-    path('abiturient_help_information/<int:pk>/',AbiturientInformationUpdateApiView.as_view()),
+    path('answer/',AnswerApiView.as_view()),
+    path('answer/<int:pk>/',AboutCompanyUpdateApiView.as_view()),
     path('oportunities/', OportunitiesApiView.as_view()),
     path('oportunities/<int:pk>/', OportunitiesUpdateApiView.as_view()),
     path('ourpartners/', OurpartnersApiView.as_view()),

@@ -73,13 +73,13 @@ class AboutCompanySerializers(serializers.ModelSerializer):
 
 
 
-class StudentHelpInformationSerializers(serializers.ModelSerializer):
+class QuestionSerializers(serializers.ModelSerializer):
     title=serializers.CharField()
     body=serializers.CharField()
     created_at=serializers.DateTimeField()
 
     def create(self, validated_data):
-        student_help_information=StudentHelpInformation.objects.all()
+        student_help_information=Questions.objects.all()
         return student_help_information
 
     def update(self, instance, validated_data):
@@ -90,18 +90,18 @@ class StudentHelpInformationSerializers(serializers.ModelSerializer):
         return instance
 
     class Meta:
-        model=StudentHelpInformation
+        model=Questions
         fields=('title','body','created_at')
 
 
 
-class AbiturientHelpInformationSerializers(serializers.ModelSerializer):
+class AnswerSerializers(serializers.ModelSerializer):
     title=serializers.CharField()
     body=serializers.CharField()
     created_at=serializers.DateTimeField()
 
     def create(self, validated_data):
-        abiturient_information=AbiturientHelpInformation.objects.all()
+        abiturient_information=Answers.objects.all()
         return abiturient_information
 
     def update(self, instance, validated_data):
@@ -110,30 +110,32 @@ class AbiturientHelpInformationSerializers(serializers.ModelSerializer):
 
 
     class Meta:
-        model=Ourpartners
+        model=Answers
         fields=('title','body','created_at',)
 
 
 
 class OportunitiesSerializers(serializers.ModelSerializer):
-    student_information=serializers.PrimaryKeyRelatedField(queryset=StudentHelpInformation.objects.all())
-    abiturient_information=serializers.PrimaryKeyRelatedField(queryset=AbiturientHelpInformation.objects.all())
+    title=serializers.CharField()
+    question=serializers.PrimaryKeyRelatedField(queryset=Questions.objects.all())
+    answer=serializers.PrimaryKeyRelatedField(queryset=Answers.objects.all())
 
     def create(self, validated_data):
-        ourpartners=Ourpartners.objects.all()
-        return ourpartners
+        oportunities=Oportunities.objects.all()
+        return oportunities
 
 
 
     def update(self, instance, validated_data):
-        instance.student_information=validated_data.get('student_information')
-        instance.abiturient_information=validated_data.get('abiturient_information')
+        instance.question=validated_data.get('question')
+        instance.answer=validated_data.get('answer')
+        instance.title=validated_data.get('title')
         instance.save()
         return instance
 
     class Meta:
         model=Oportunities
-        fields=('student_information','abiturient_information',)
+        fields=('title','answer','question')
 
 
 class OurpartnersSerializers(serializers.ModelSerializer):

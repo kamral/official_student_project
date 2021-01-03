@@ -1,6 +1,8 @@
 from django.db import models
 # Create your models here.
 from PIL import Image
+from django.urls import reverse
+
 from student.models import *
 
 
@@ -47,6 +49,9 @@ class General_education_system(models.Model):
 
 class Category_education(models.Model):
     name=models.CharField(max_length=100,verbose_name='Общеобразовательная система')
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id'})
 
     def __str__(self):
         return self.name

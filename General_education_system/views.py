@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from footer_project.models import AboutCompany,Oportunities
+from footer_project.models import \
+    AboutUs,Contacts,Answers,Questions
 from .models import General_education_system,Category_education
 
 # Create your views here.
@@ -8,13 +9,17 @@ from .models import General_education_system,Category_education
 
 def index(request):
     categories=Category_education.objects.all()
-    company = AboutCompany.objects.all()
-    oportunities=Oportunities.objects.all()
+    about_us=AboutUs.objects.get(pk__in=[1])
+    contacts=Contacts.objects.get(pk__in=[1])
+    answers=Answers.objects.get(pk__in=[1])
+    questions= Questions.objects.get(pk__in=[1])
 
     context={
+        'answers': answers,
+        'questions': questions,
         'categories':categories,
-        'company':company,
-        'oportunities':oportunities
+        'about_us':about_us,
+        'contacts': contacts,
     }
     return render(request,'education/base.html',context)
 
@@ -39,8 +44,15 @@ def get_education_category(request,pk):
     # для отмены повторения  использовании катео
     # categories=Category_education.objects.all()
     education=General_education_system.objects.filter(category=pk)
+    about_us=AboutUs.objects.all()
+    contacts=Contacts.objects.all()
+    about_company=AboutCompany.objects.all()
     return render(request, 'test.html',
                   {
                       # 'categories':categories,
                       'education': education,
+                      'about_us':about_us,
+                      'contacts':contacts,
+                      'about_company':about_company
                    })
+

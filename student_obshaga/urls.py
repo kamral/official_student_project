@@ -20,13 +20,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('student_api/', include('student_api.urls')),
-    path('general_education_system/api/',
-         include('General_education_system.api.urls')),
+    # path('student_api/', include('student_api.urls')),
+    # path('general_education_system/api/',
+    #      include('General_education_system.api.urls')),
     path('general_education_system/',
-         include('General_education_system.urls')),
+         include('footer_project.urls')),
 
-    path('footer_project/api/', include('footer_project.api.urls'))
+    # path('footer_project/api/', include('footer_project.api.urls'))
 
 ]
 
