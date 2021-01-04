@@ -6,7 +6,7 @@ from footer_project.models import \
     Oportunities,\
     Ourpartners,Ourpartners_category
 
-from .models import Category_education
+from .models import Category_education,General_education_system
 
 # Create your views here.
 
@@ -42,20 +42,26 @@ def index(request):
 #     })
 
 
-# def get_education_category(request,pk):
-#     # используем функцию из templatetags
-#     # для отмены повторения  использовании катео
-#     # categories=Category_education.objects.all()
-#     education=General_education_system.objects.filter(category=pk)
-#     about_us=AboutUs.objects.all()
-#     contacts=Contacts.objects.all()
-#     about_company=AboutCompany.objects.all()
-#     return render(request, 'category_education.html',
-#                   {
-#                       # 'categories':categories,
-#                       'education': education,
-#                       'about_us':about_us,
-#                       'contacts':contacts,
-#                       'about_company':about_company
-#                    })
+def get_education_category(request,pk):
+    # используем функцию из templatetags
+    # для отмены повторения  использовании катео
+    # categories=Category_education.objects.all()
+    about_company_categories = About_Company_Category.objects.all()
+    opportunities_categories = Opportunities_category.objects.all()
+    ourpartners_category = Ourpartners_category.objects.all()
+    education=General_education_system.objects.filter(category=pk)
+
+
+    return render(request, 'category_education.html',
+                  {
+                      'about_company_categories': about_company_categories,
+                      'oportunities_category': opportunities_categories,
+                      'ourpartners_category': ourpartners_category,
+                      # 'categories':categories,
+                      'education': education,
+
+
+                   })
+
+
 

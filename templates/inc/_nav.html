@@ -1,4 +1,4 @@
-{%load education_tags%}
+<!--{%load education_tags%}-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Общага</a>
@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Поддержка</a>
@@ -19,7 +19,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             {% for i in categories%}
-              <li><a class="dropdown-item" href="#">{{i.name}}</a></li>
+              <li><a class="dropdown-item" href="{%url 'category_educations' i.pk%}">{{i.name}}</a></li>
             {%endfor%}
           </ul>
         </li>

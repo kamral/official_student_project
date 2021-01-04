@@ -7,9 +7,13 @@
       <div class="col-6 col-md">
         <h5>О компании </h5>
         <ul >
-          {%for i in about_company_categories%}
-                <li><a class="link-secondary" href="#"> {{i.name}}</a></li>
-          {%endfor%}
+
+          <li><a class="link-secondary" href="{% url 'about_us' about_company_categories.first.pk%}">
+            {{about_company_categories.first}}</a></li>
+          <li><a class="link-secondary"
+                 href="{% url 'contacts' about_company_categories.last.pk%}">
+            {{about_company_categories.last}}</a></li>
+
 
         </ul>
       </div>

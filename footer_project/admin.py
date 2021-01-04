@@ -7,7 +7,10 @@ from .models import Ourpartners,\
 # Register your models here.
 
 
-admin.site.register(About_Company_Category)
+class AboutCompanyCategoriesAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+admin.site.register(About_Company_Category,AboutCompanyCategoriesAdmin)
 admin.site.register(Opportunities_category)
 admin.site.register(Ourpartners_category)
 admin.site.register(Ourpartners)
