@@ -12,6 +12,7 @@ from General_education_system.models import Category_education
 
 
 def home(request):
+    categories=Category_education.objects.all()
     about_company_categories=About_Company_Category.objects.all()
     opportunities_categories=Opportunities_category.objects.all()
     ourpartners_category=Ourpartners_category.objects.all()
@@ -24,6 +25,7 @@ def home(request):
 
 
 def get_about_company_category_footer(request, pk):
+    categories=Category_education.objects.all()
     about_company=AboutCompany.objects.filter(category=pk)
     about_company_categories = About_Company_Category.objects.all()
     opportunities_categories = Opportunities_category.objects.all()
@@ -38,23 +40,23 @@ def get_about_company_category_footer(request, pk):
 
 
     }
-    return  render(request, 'footer_project/about_us.html', context)
+    return  render(request, 'footer_project/about_company.html', context)
 
 
 
-def get_about_company_category_footer_contacts(request, pk):
-    about_company=AboutCompany.objects.filter(category=pk)
+
+
+def get_opportunities_footer(request,pk):
+    categories=Category_education.objects.all()
+    oportunities=Oportunities.objects.filter(category=pk)
     about_company_categories = About_Company_Category.objects.all()
     opportunities_categories = Opportunities_category.objects.all()
     ourpartners_category = Ourpartners_category.objects.all()
-    categories=Category_education.objects.all()
     context={
-        'about_company':about_company,
-        'about_company_categories': about_company_categories,
-        'oportunities_category': opportunities_categories,
+        'categories': categories,
         'ourpartners_category': ourpartners_category,
-        'categories':categories
-
-
+        'oportunities_category': opportunities_categories,
+        'about_company_categories': about_company_categories,
+        'oportunities':oportunities
     }
-    return  render(request, 'footer_project/contacts.html', context)
+    return render(request,'footer_project/oportunities.html', context)

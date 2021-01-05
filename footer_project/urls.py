@@ -1,14 +1,13 @@
 from django.urls import path
-from .views import home,\
+from .views import home, \
     get_about_company_category_footer,\
-    get_about_company_category_footer_contacts
-
+    get_opportunities_footer
 
 urlpatterns=[
     path('',home),
-    path('about_us/<str:pk>/', get_about_company_category_footer,
-         name='about_us'),
-    path('contacts/<int:pk>/', get_about_company_category_footer_contacts,
-         name='contacts'),
+    path('about_company/<int:pk>/', get_about_company_category_footer,
+         name='about_company'),
+    path('oportunities/<int:pk>/', get_opportunities_footer,
+         name='oportunities'),
 
 ]

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 
@@ -25,6 +25,9 @@ class AboutCompany(models.Model):
 class About_Company_Category(models.Model):
     name=models.CharField(max_length=100, verbose_name='Имя ')
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id'})
+
     def __str__(self):
         return self.name
 
@@ -44,6 +47,10 @@ class Oportunities(models.Model):
 class Opportunities_category(models.Model):
     name=models.CharField(max_length=100,verbose_name='Имя')
 
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id'})
+
     def __str__(self):
         return self.name
 
@@ -58,6 +65,9 @@ class Ourpartners(models.Model):
 
 class Ourpartners_category(models.Model):
     name=models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id'})
 
     def __str__(self):
         return self.name

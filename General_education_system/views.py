@@ -45,7 +45,7 @@ def index(request):
 def get_education_category(request,pk):
     # используем функцию из templatetags
     # для отмены повторения  использовании катео
-    # categories=Category_education.objects.all()
+    categories=Category_education.objects.all()
     about_company_categories = About_Company_Category.objects.all()
     opportunities_categories = Opportunities_category.objects.all()
     ourpartners_category = Ourpartners_category.objects.all()
@@ -57,7 +57,7 @@ def get_education_category(request,pk):
                       'about_company_categories': about_company_categories,
                       'oportunities_category': opportunities_categories,
                       'ourpartners_category': ourpartners_category,
-                      # 'categories':categories,
+                      'categories':categories,
                       'education': education,
 
 

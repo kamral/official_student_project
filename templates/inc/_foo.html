@@ -7,21 +7,20 @@
       <div class="col-6 col-md">
         <h5>О компании </h5>
         <ul >
-
-          <li><a class="link-secondary" href="{% url 'about_us' about_company_categories.first.pk%}">
-            {{about_company_categories.first}}</a></li>
-          <li><a class="link-secondary"
-                 href="{% url 'contacts' about_company_categories.last.pk%}">
-            {{about_company_categories.last}}</a></li>
-
+          {%for i in about_company_categories%}
+                <li><a class="link-secondary"
+                       href="{%url 'about_company' i.pk %}">
+                  {{i.name}}</a></li>
+          {%endfor%}
 
         </ul>
       </div>
       <div class="col-6 col-md">
         <h5>Возможности</h5>
         <ul class="list-unstyled text-small">
-          {%for i in oportunities_category%}
-            <li><a class="link-secondary" href="#">{{i.name}}</a></li>
+          {%for item in oportunities_category%}
+            <li><a class="link-secondary"
+                   href="{% url 'oportunities' item.pk %}">{{item.name}}</a></li>
           {%endfor%}
         </ul>
       </div>
