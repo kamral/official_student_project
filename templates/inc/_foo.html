@@ -28,7 +28,7 @@
         <h5>Партнеры</h5>
         <ul class="list-unstyled text-small">
           {%for i in ourpartners_category%}
-          <li><a class="link-secondary" href="#">{{i.name}}</a></li>
+          <li><a class="link-secondary" href="{%url 'ourpartners' i.pk%}">{{i.name}}</a></li>
           {%endfor%}
         </ul>
       </div>

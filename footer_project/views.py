@@ -60,3 +60,20 @@ def get_opportunities_footer(request,pk):
         'oportunities':oportunities
     }
     return render(request,'footer_project/oportunities.html', context)
+
+
+def get_ourpartners(request,pk):
+    ourpartners_category = Ourpartners_category.objects.all()
+    opportunities_categories = Opportunities_category.objects.all()
+    about_company_categories = About_Company_Category.objects.all()
+    categories=Category_education.objects.all()
+    ourpartners=Ourpartners.objects.filter(category=pk)
+    context={
+        'ourpartners_category': ourpartners_category,
+        'oportunities_category': opportunities_categories,
+        'ourpartners':ourpartners,
+        'about_company_categories': about_company_categories,
+        'categories': categories,
+
+    }
+    return render(request, 'footer_project/ourpartners.html',context)

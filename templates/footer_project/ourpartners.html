@@ -1,0 +1,18 @@
+{%extends 'education/base.html'%}
+{%block content%}
+{%for item in ourpartners%}
+<div class="card mb-3">
+    <div class="row no-gutters">
+
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-title">{{item.address}}</p>
+
+                <p class="card-text">{{item.category}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{%endfor%}
+{%endblock content%}
