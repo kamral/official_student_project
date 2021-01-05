@@ -26,7 +26,7 @@ class About_Company_Category(models.Model):
     name=models.CharField(max_length=100, verbose_name='Имя ')
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'category_id'})
+        return reverse('about_company', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.name
@@ -49,7 +49,7 @@ class Opportunities_category(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'category_id'})
+        return reverse('oportunities', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.name
@@ -67,7 +67,7 @@ class Ourpartners_category(models.Model):
     name=models.CharField(max_length=100)
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'category_id'})
+        return reverse('ourpartners', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.name
