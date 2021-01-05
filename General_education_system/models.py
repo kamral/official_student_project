@@ -43,8 +43,8 @@ class General_education_system(models.Model):
     category=models.ForeignKey('Category_education',on_delete=models.CASCADE)
     history_of_university=models.TextField()
 
-    # def get_absolute_url(self):
-    #     return reverse('education_detail', args=[self.id])
+    def get_absolute_url(self):
+        return reverse('education_detail', kwargs={'pk':self.pk})
 
 
     def __str__(self):
@@ -54,7 +54,7 @@ class Category_education(models.Model):
     name=models.CharField(max_length=100,verbose_name='Общеобразовательная система')
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'category_id'})
+        return reverse('category_educations', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.name

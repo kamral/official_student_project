@@ -12,7 +12,7 @@ from General_education_system.models import Category_education
 
 # используем templatetags- для сокращения повторения кода
 def home(request):
-    categories=Category_education.objects.all()
+    # categories=Category_education.objects.all()
     # about_company_categories=About_Company_Category.objects.all() (путь в templatetags)
     # opportunities_categories=Opportunities_category.objects.all() (путь в templatetags)
     # ourpartners_category=Ourpartners_category.objects.all()
@@ -20,7 +20,7 @@ def home(request):
         # 'about_company_categories':about_company_categories,
         # 'oportunities_category':opportunities_categories,
         # 'ourpartners_category':ourpartners_categoryб
-        'categories': categories,
+        # 'categories': categories,
 
     }
     return render(request,'education/base.html',context)

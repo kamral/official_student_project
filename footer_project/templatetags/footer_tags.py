@@ -5,7 +5,6 @@ from footer_project.models import \
     Ourpartners_category
 
 
-from General_education_system.models import Category_education
 
 
 register=template.Library()

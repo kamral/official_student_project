@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from footer_project.models import \
     About_Company_Category,\
     AboutCompany,\
@@ -21,25 +21,11 @@ def index(request):
         'about_company_categories': about_company_categories,
         'oportunities_category': opportunities_categories,
         'ourpartners_category': ourpartners_category,
-        'categories':categories,
+        'categories':categories
 
     }
     return render(request,'education/base.html',context)
 
-# def get_category(request,category_id):
-#     pass
-
-
-# def get_category(request,category_id):
-#     general_education_system=General_education_system.objects.filter(category_id)
-#     categories=Category_education.objects.all()
-#     category=Category_education.objects.get(pk=category_id)
-#     return render(request,'eduction_category.html',{
-#         'general_education_system':general_education_system,
-#         'categories':categories,
-#         'category':category
-#
-#     })
 
 
 def get_education_category(request,pk):
@@ -63,10 +49,7 @@ def get_education_category(request,pk):
 
                    })
 
-
-# def education_detail(request,General_education_system_id):
-#     education_in=General_education_system.objects.get(pk=General_education_system_id)
-#     context={
-#         'read_more':education_in
-#     }
-#     return render(request,'category_education_read_more.html',context)
+def get_education_detail(request,pk):
+    education=get_object_or_404(General_education_system,pk=pk)
+    return render(request, 'category_education_read_more.html',
+                  {'education':education})
