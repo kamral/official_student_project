@@ -1,0 +1,5 @@
+
+{%for item in oportunities_category%}
+<li><a class="link-secondary"
+       href="{% url 'oportunities' item.pk %}">{{item.name}}</a></li>
+{%endfor%}

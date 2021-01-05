@@ -1,3 +1,4 @@
+{%load footer_tags%}
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
       <div class="col-12 col-md">
@@ -7,29 +8,38 @@
       <div class="col-6 col-md">
         <h5>О компании </h5>
         <ul >
-          {%for i in about_company_categories%}
-                <li><a class="link-secondary"
-                       href="{%url 'about_company' i.pk %}">
-                  {{i.name}}</a></li>
-          {%endfor%}
+<!--          {%get_about_company_categories as about_company_categories %}-->
+<!--          {%for i in about_company_categories%}-->
+<!--          <li><a class="link-secondary"-->
+<!--                 href="{%url 'about_company' i.pk %}">-->
+<!--            {{i.name}}</a></li>-->
+<!--          {%endfor%}-->
+          {% show_categories_about_company%}
+
+        </ul>
+
 
         </ul>
       </div>
       <div class="col-6 col-md">
         <h5>Возможности</h5>
         <ul class="list-unstyled text-small">
-          {%for item in oportunities_category%}
-            <li><a class="link-secondary"
-                   href="{% url 'oportunities' item.pk %}">{{item.name}}</a></li>
-          {%endfor%}
+<!--          {%get_oportunities_categories as oportunities_category %}-->
+<!--          {%for item in oportunities_category%}-->
+<!--            <li><a class="link-secondary"-->
+<!--                   href="{% url 'oportunities' item.pk %}">{{item.name}}</a></li>-->
+<!--          {%endfor%}-->
+            {% show_categories_oportunities_category%}
         </ul>
       </div>
       <div class="col-6 col-md">
         <h5>Партнеры</h5>
         <ul class="list-unstyled text-small">
-          {%for i in ourpartners_category%}
-          <li><a class="link-secondary" href="{%url 'ourpartners' i.pk%}">{{i.name}}</a></li>
-          {%endfor%}
+<!--          {% get_ourpartners_category as ourpartners_category%}-->
+<!--          {%for i in ourpartners_category%}-->
+<!--          <li><a class="link-secondary" href="{%url 'ourpartners' i.pk%}">{{i.name}}</a></li>-->
+<!--          {%endfor%}-->
+            {% show_ourpartners_category%}
         </ul>
       </div>
     </div>

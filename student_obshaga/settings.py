@@ -98,7 +98,7 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'NAME': 'db_std_door_41'
+        'NAME': 'db_std_door_42'
     }
 }
 

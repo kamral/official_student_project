@@ -1,0 +1,7 @@
+
+    {%for i in about_company_categories%}
+    <li><a class="link-secondary"
+           href="{%url 'about_company' i.pk %}">
+        {{i.name}}</a></li>
+    {%endfor%}
+

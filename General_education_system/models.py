@@ -43,6 +43,9 @@ class General_education_system(models.Model):
     category=models.ForeignKey('Category_education',on_delete=models.CASCADE)
     history_of_university=models.TextField()
 
+    # def get_absolute_url(self):
+    #     return reverse('education_detail', args=[self.id])
+
 
     def __str__(self):
         return self.name

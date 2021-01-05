@@ -64,4 +64,9 @@ def get_education_category(request,pk):
                    })
 
 
-
+# def education_detail(request,General_education_system_id):
+#     education_in=General_education_system.objects.get(pk=General_education_system_id)
+#     context={
+#         'read_more':education_in
+#     }
+#     return render(request,'category_education_read_more.html',context)

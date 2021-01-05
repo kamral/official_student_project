@@ -1,0 +1,3 @@
+{%for i in ourpartners_category%}
+<li><a class="link-secondary" href="{%url 'ourpartners' i.pk%}">{{i.name}}</a></li>
+{%endfor%}
