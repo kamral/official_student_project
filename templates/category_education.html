@@ -31,4 +31,35 @@
             ooops
   {%endfor%}
 
+{% if education.has_other_pages %}
+<nav aria-label="...">
+<ul class="pagination">
+<!--    если есть следующая страница-->
+{% if education.has_previous %}
+    <li class="page-item disabled">
+        <a class="page-link" href="?page={{ education.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+{% else %}
+{% endif %}
+<!--    цикл по всем страницам-->
+{% for i in education.paginator.page_range %}
+<!--    если текущая страница действующая-->
+{% if education.number == i %}
+<li li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">{{i}}</a>
+</li>
+{% else %}
+<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+{% endif %}
+{% endfor %}
+{% if education.has_next %}
+<li class="page-item"><a class="page-link" href="?page={{ education.next_page_number }}">Next</a></li>
+{% else %}
+<li class="disabled"><span></span></li>
+{% endif %}
+</ul>
+</nav>
+{% endif %}
+
+
 {%endblock%}

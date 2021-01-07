@@ -8,7 +8,8 @@ from .models import *
 
 
 
-
+admin.site.register(Floor)
+admin.site.register(Dorm_building)
 admin.site.register(Student)
 admin.site.register(Room)
 admin.site.register(Direction)

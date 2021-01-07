@@ -14,6 +14,10 @@ class Course(models.Model):
         verbose_name='Курс'
         verbose_name_plural='Курсы'
 
+
+    def __str__(self):
+        return self.kurs_number
+
 class Faculty(models.Model):
     faculty_number=models.CharField(max_length=100)
 
@@ -21,10 +25,14 @@ class Faculty(models.Model):
         verbose_name='Факультет'
         verbose_name_plural='Факультеты'
 
+    def __str__(self):
+        return self.faculty_number
+
 class Direction(models.Model):
     direction_name=models.CharField(max_length=100)
 
-
+    def __str__(self):
+        return self.direction_name
 
 class Room(models.Model):
     room_number=models.PositiveIntegerField(null=True,blank=True)
@@ -32,17 +40,31 @@ class Room(models.Model):
     # student_name=models.ForeignKey('Student',on_delete=models.CASCADE)
     student_photo=models.ImageField(verbose_name='Фото студента')
 
+    def __str__(self):
+        return self.room_number
 
     class Meta:
         verbose_name='Номер комнаты'
         verbose_name_plural='Номера комнат'
 
-class Dorm_room(models.Model):
-    address=models.CharField(max_length=100,verbose_name='Адрес')
-    dorm_building=models.PositiveIntegerField(null=True,blank=True, verbose_name='Корпус')
-    number_room=models.ForeignKey(Room,on_delete=models.CASCADE)
-    floor=models.PositiveIntegerField(null=True,blank=True)
+class Dorm_building(models.Model):
+    number_building=models.CharField(max_length=100)
 
+class Floor(models.Model):
+    number_floor=models.CharField(max_length=100)
+    dorm_bulding=models.ForeignKey(Dorm_building,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.number_floor
+
+class Dorm_room(models.Model):
+    title=models.CharField(max_length=100, verbose_name='Название общежития')
+    address=models.CharField(max_length=100,verbose_name='Адрес')
+    dorm_building=models.ForeignKey(Dorm_building,on_delete=models.CASCADE,
+                                    verbose_name='Корпус')
+
+    def __str__(self):
+        return self.title
 
 class Student(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,
@@ -58,7 +80,8 @@ class Student(models.Model):
     dorm_room=models.ForeignKey(Dorm_room,on_delete=models.CASCADE)
 
 
-
+    def __str__(self):
+        return self.user
 
 
     class Meta:

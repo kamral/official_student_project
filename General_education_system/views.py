@@ -8,6 +8,7 @@ from footer_project.models import \
 
 from .models import Category_education,General_education_system
 from .forms import General_education_systemForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
@@ -37,7 +38,14 @@ def get_education_category(request,pk):
     opportunities_categories = Opportunities_category.objects.all()
     ourpartners_category = Ourpartners_category.objects.all()
     education=General_education_system.objects.filter(category=pk)
-
+    page=request.GET.get('page',1)
+    paginator=Paginator(education,1)
+    try:
+        education=paginator.page(page)
+    except PageNotAnInteger:
+        education=paginator.page(1)
+    except EmptyPage:
+        education=paginator.page(paginator.num_pages)
 
     return render(request, 'category_education.html',
                   {
@@ -49,6 +57,7 @@ def get_education_category(request,pk):
 
 
                    })
+
 
 def get_education_detail(request,pk):
     education=get_object_or_404(General_education_system,pk=pk)

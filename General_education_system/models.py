@@ -42,6 +42,7 @@ class General_education_system(models.Model):
     filial = models.CharField(max_length=100, verbose_name='Филиал университета', blank=True)
     category=models.ForeignKey('Category_education',on_delete=models.CASCADE)
     history_of_university=models.TextField()
+    door_room_name=models.ForeignKey(Dorm_room,on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('education_detail', kwargs={'pk':self.pk})

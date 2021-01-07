@@ -7,4 +7,4 @@ class General_education_systemForm(forms.ModelForm):
     class Meta:
         model=General_education_system
         fields=['image','name','address','category',
-               'filial','history_of_university']
+               'filial','history_of_university','door_room_name']
