@@ -36,7 +36,7 @@
 <ul class="pagination">
 <!--    если есть следующая страница-->
 {% if education.has_previous %}
-    <li class="page-item disabled">
+    <li class="page-item">
         <a class="page-link" href="?page={{ education.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
     </li>
 {% else %}
