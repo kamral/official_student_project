@@ -10,16 +10,16 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Поддержка</a>
-        </li>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Общеобразовательные учереждения
+          <a class="nav-link dropdown-toggle" href="#"
+             id="navbarDropdownMenuLink" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            {{General_education_system_door_room_name}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            {% for i in categories%}
-              <li><a class="dropdown-item" href="{%url 'category_educations' i.pk%}">{{i.name}}</a></li>
+            {% for i in dorm_room_drom_building%}
+              <li><a class="dropdown-item" href="#">{{i.dorm_building_id}}</a></li>
             {%endfor%}
           </ul>
         </li>

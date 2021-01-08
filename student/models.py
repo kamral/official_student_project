@@ -47,8 +47,12 @@ class Room(models.Model):
         verbose_name='Номер комнаты'
         verbose_name_plural='Номера комнат'
 
+
 class Dorm_building(models.Model):
     number_building=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.number_building
 
 class Floor(models.Model):
     number_floor=models.CharField(max_length=100)
@@ -60,8 +64,7 @@ class Floor(models.Model):
 class Dorm_room(models.Model):
     title=models.CharField(max_length=100, verbose_name='Название общежития')
     address=models.CharField(max_length=100,verbose_name='Адрес')
-    dorm_building=models.ForeignKey(Dorm_building,on_delete=models.CASCADE,
-                                    verbose_name='Корпус')
+    dorm_building=models.ManyToManyField(Dorm_building)
 
     def __str__(self):
         return self.title
