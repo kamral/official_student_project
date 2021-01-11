@@ -19,7 +19,10 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             {% for i in categories%}
-              <li><a class="dropdown-item" href="{%url 'category_educations' i.pk%}">{{i.name}}</a></li>
+              <li><a class="dropdown-item"
+                     href="{%url 'category_educations' i.pk%}">
+                {{i.name}}
+                 <span class="badge bg-primary rounded-pill">{{i.cnt}}</span></a></li>
             {%endfor%}
           </ul>
         </li>

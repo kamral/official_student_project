@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render, get_object_or_404, redirect
 from footer_project.models import \
     About_Company_Category,\
@@ -6,7 +7,7 @@ from footer_project.models import \
     Oportunities,\
     Ourpartners,Ourpartners_category
 
-from .models import Category_education,General_education_system
+from .models import Category_education,General_education_system,Floor,Dorm_building
 from .forms import General_education_systemForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from student.models import Dorm_room
@@ -18,7 +19,7 @@ def index(request):
     about_company_categories = About_Company_Category.objects.all()
     opportunities_categories = Opportunities_category.objects.all()
     ourpartners_category = Ourpartners_category.objects.all()
-    categories=Category_education.objects.all()
+    categories=Category_education.objects.annotate(cnt=Count('general_education_system'))
 
     context={
         'about_company_categories': about_company_categories,
@@ -63,15 +64,15 @@ def get_education_category(request,pk):
 def get_education_detail(request,pk):
     education=get_object_or_404(General_education_system,pk=pk)
     dorm_room=Dorm_room.objects.get(pk=pk)
-    dorm_room_drom_building=Dorm_room.dorm_building.through.objects.filter(dorm_room_id=pk)
+    # dorm_room_drom_building=Dorm_room.dorm_building.through.objects.filter(dorm_room_id=pk)
     General_education_system_door_room_name=General_education_system.objects.get(door_room_name=pk)
-
+    dorm_building=Dorm_building.objects.filter(dorm_room=pk)
     return render(request, 'category_education_read_more.html',
                   {'education':education,
                    'dorm_room':dorm_room,
-                   'dorm_room_drom_building':dorm_room_drom_building,
+                   'dorm_building':dorm_building,
+                   # 'dorm_room_drom_building':dorm_room_drom_building,
                    'General_education_system_door_room_name':General_education_system_door_room_name})
-
 
 def add_education_system(request):
     if request.method == 'POST':

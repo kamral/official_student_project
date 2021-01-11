@@ -37,7 +37,8 @@
 <!--    если есть следующая страница-->
 {% if education.has_previous %}
     <li class="page-item">
-        <a class="page-link" href="?page={{ education.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
+        <a class="page-link" href="?page={{ education.previous_page_number }}"
+           tabindex="-1" aria-disabled="true">Previous</a>
     </li>
 {% else %}
 {% endif %}
@@ -45,7 +46,7 @@
 {% for i in education.paginator.page_range %}
 <!--    если текущая страница действующая-->
 {% if education.number == i %}
-<li li class="page-item active" aria-current="page">
+<li  class="page-item active" aria-current="page">
           <a class="page-link" href="#">{{i}}</a>
 </li>
 {% else %}

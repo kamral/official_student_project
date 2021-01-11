@@ -49,22 +49,22 @@ class Room(models.Model):
 
 
 class Dorm_building(models.Model):
-    number_building=models.CharField(max_length=100)
+    number_building = models.CharField(max_length=100)
+    dorm_room=models.ForeignKey('Dorm_room',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.number_building
 
 class Floor(models.Model):
-    number_floor=models.CharField(max_length=100)
-    dorm_bulding=models.ForeignKey(Dorm_building,on_delete=models.CASCADE)
+    number_floor = models.CharField(max_length=100)
+    dorm_bulding = models.ForeignKey(Dorm_building,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.number_floor
 
 class Dorm_room(models.Model):
-    title=models.CharField(max_length=100, verbose_name='Название общежития')
-    address=models.CharField(max_length=100,verbose_name='Адрес')
-    dorm_building=models.ManyToManyField(Dorm_building)
+    title = models.CharField(max_length=100, verbose_name='Название общежития')
+    address = models.CharField(max_length=100,verbose_name='Адрес')
 
     def __str__(self):
         return self.title

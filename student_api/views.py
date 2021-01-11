@@ -64,6 +64,16 @@ class DirectionFacultyApiView(generics.ListCreateAPIView):
     pagination_class=DirectionPagination
 
 
+class FLoorAPiVIew(generics.ListCreateAPIView):
+    model=Floor
+    queryset = Floor.objects.all()
+
+class Dorm_buildingApiView(generics.ListCreateAPIView):
+    model=Dorm_building
+    queryset = Dorm_building.objects.all()
+
+
+
 class DoorRoomApiView(generics.ListCreateAPIView):
     serializer_class = Dorm_roomSerializers
     queryset = Dorm_room.objects.all()

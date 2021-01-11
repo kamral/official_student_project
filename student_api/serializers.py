@@ -1,14 +1,11 @@
 from rest_framework import serializers
 from user.models import User
-from student.models import\
-    Student,\
-    Course,\
-    Faculty,\
-    Direction,\
-    Room,Dorm_room
-
-
-
+from student.models import \
+    Student, \
+    Course, \
+    Faculty, \
+    Direction, \
+    Room, Dorm_room, Dorm_building, Floor
 
 
 class CourseSerializers(serializers.ModelSerializer):
@@ -40,18 +37,46 @@ class RoomSerializers(serializers.ModelSerializer):
         fields=('room_number','student_name','student_photo',)
 
 
+
+class Dorm_buildingSerializers(serializers.ModelSerializer):
+    number_building=serializers.CharField(max_length=100)
+
+    def create(self, validated_data):
+        return Dorm_building.objects.all()
+
+    class Meta:
+        model=Dorm_building
+        fields=('number_building')
+
+
+
+class FLoorSerializers(serializers.ModelSerializer):
+    number_floor=serializers.CharField()
+    dorm_building=serializers.PrimaryKeyRelatedField(queryset=Floor.objects.all())
+
+    def create(self, validated_data):
+        return Floor.objects.all()
+
+    class Meta:
+        model=Floor
+        fields=('number_floor','dorm_building')
+
+
+
+
+
 class Dorm_roomSerializers(serializers.ModelSerializer):
 
     number_room=RoomSerializers(required=True)
 
     address=serializers.CharField(required=True)
     dorm_building=serializers.IntegerField(required=True)
-    # number_room=serializers.PrimaryKeyRelatedField(queryset=Room.objects)
-    floor=serializers.IntegerField(required=True)
+    dorm_building=serializers.ManyToManyField(many=True,read_only=True)
+
 
     class Meta:
         model=Dorm_room
-        fields=('number_room','address','dorm_building','floor',)
+        fields=('number_room','address','dorm_building')
 
 
 

@@ -18,8 +18,9 @@
             {{General_education_system_door_room_name}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            {% for i in dorm_room_drom_building%}
-              <li><a class="dropdown-item" href="#">{{i.dorm_building_id}}</a></li>
+
+            {%for i in dorm_building%}
+              <li><a class="dropdown-item" href="#">{{i.number_building}}</a></li>
             {%endfor%}
           </ul>
         </li>
@@ -27,6 +28,9 @@
           <a class="nav-link" href="{% url 'add_education_system' %}">Добавить</a>
         </li>
       </ul>
+
+
+
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

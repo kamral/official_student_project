@@ -8,6 +8,7 @@ from .serialzers import \
 from rest_framework.generics import\
     ListCreateAPIView,\
     RetrieveUpdateDestroyAPIView
+from rest_framework import viewsets
 
 from footer_project.models import \
     AboutCompany,\
@@ -17,12 +18,35 @@ from footer_project.models import \
     Oportunities,\
     Opportunities_category
 
+# def home(request):
+#     # categories=Category_education.objects.all()
+#     # about_company_categories=About_Company_Category.objects.all() (путь в templatetags)
+#     # opportunities_categories=Opportunities_category.objects.all() (путь в templatetags)
+#     # ourpartners_category=Ourpartners_category.objects.all()
+#     context={
+#         # 'about_company_categories':about_company_categories,
+#         # 'oportunities_category':opportunities_categories,
+#         # 'ourpartners_category':ourpartners_categoryб
+#         # 'categories': categories,
+#
+#     }
+#     return render(request,'education/base.html',context)
+
+
+
+
+
+
+
+
+
+
 class AboutCompanyApiView(ListCreateAPIView):
     serializer_class = AboutCompanySerializers
     queryset = AboutCompany.objects.all()
 
 class AboutCompanyUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = AboutCompany
+    serializer_class = AboutCompanySerializers
     queryset = AboutCompany.objects.all()
 
 
