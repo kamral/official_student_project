@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from user.models import User
 # Create your models here.
 from PIL import Image
@@ -51,6 +53,10 @@ class Room(models.Model):
 class Dorm_building(models.Model):
     number_building = models.CharField(max_length=100)
     dorm_room=models.ForeignKey('Dorm_room',on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('dorm_building', kwargs={'pk':self})
+
 
     def __str__(self):
         return self.number_building

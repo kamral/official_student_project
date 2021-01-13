@@ -14,6 +14,8 @@ class CourseSerializers(serializers.ModelSerializer):
         fields=('kurs_number',)
 
 
+
+
 class FacultySerializers(serializers.ModelSerializer):
     class Meta:
         model = Faculty
@@ -39,19 +41,17 @@ class RoomSerializers(serializers.ModelSerializer):
 
 
 class Dorm_buildingSerializers(serializers.ModelSerializer):
-    number_building=serializers.CharField(max_length=100)
 
     def create(self, validated_data):
         return Dorm_building.objects.all()
 
     class Meta:
         model=Dorm_building
-        fields=('number_building')
+        fields=('number_building','dorm_room')
 
 
 
 class FLoorSerializers(serializers.ModelSerializer):
-    number_floor=serializers.CharField()
     dorm_building=serializers.PrimaryKeyRelatedField(queryset=Floor.objects.all())
 
     def create(self, validated_data):
@@ -67,16 +67,11 @@ class FLoorSerializers(serializers.ModelSerializer):
 
 class Dorm_roomSerializers(serializers.ModelSerializer):
 
-    number_room=RoomSerializers(required=True)
-
-    address=serializers.CharField(required=True)
-    dorm_building=serializers.IntegerField(required=True)
-    dorm_building=serializers.ManyToManyField(many=True,read_only=True)
 
 
     class Meta:
         model=Dorm_room
-        fields=('number_room','address','dorm_building')
+        fields=('title','address')
 
 
 

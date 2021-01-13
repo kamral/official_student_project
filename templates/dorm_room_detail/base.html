@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%} Новости со всего мира {%endblock title%}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+</head>
+<body>
+
+{%include 'dorm_room_detail/inc/_nav.html'%}
+<div class="'container mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            {%block sidebar%} {%endblock%}
+        </div>
+
+        <div class="col-md-9">
+
+            {%block content%} {%endblock%}
+        </div>
+    </div>
+</div>
+{%include 'dorm_room_detail/inc/_foo.html'%}
+
+
+</body>
+</html>

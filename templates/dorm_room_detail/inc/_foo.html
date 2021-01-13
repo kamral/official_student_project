@@ -1,0 +1,46 @@
+{%load footer_tags%}
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+        <small class="d-block mb-3 text-muted">© 2017-2020</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>О компании </h5>
+        <ul >
+<!--          {%get_about_company_categories as about_company_categories %}-->
+<!--          {%for i in about_company_categories%}-->
+<!--          <li><a class="link-secondary"-->
+<!--                 href="{%url 'about_company' i.pk %}">-->
+<!--            {{i.name}}</a></li>-->
+<!--          {%endfor%}-->
+          {% show_categories_about_company%}
+
+        </ul>
+
+
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Возможности</h5>
+        <ul class="list-unstyled text-small">
+<!--          {%get_oportunities_categories as oportunities_category %}-->
+<!--          {%for item in oportunities_category%}-->
+<!--            <li><a class="link-secondary"-->
+<!--                   href="{% url 'oportunities' item.pk %}">{{item.name}}</a></li>-->
+<!--          {%endfor%}-->
+            {% show_categories_oportunities_category%}
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Партнеры</h5>
+        <ul class="list-unstyled text-small">
+<!--          {% get_ourpartners_category as ourpartners_category%}-->
+<!--          {%for i in ourpartners_category%}-->
+<!--          <li><a class="link-secondary" href="{%url 'ourpartners' i.pk%}">{{i.name}}</a></li>-->
+<!--          {%endfor%}-->
+            {% show_ourpartners_category%}
+        </ul>
+      </div>
+    </div>
+</footer>

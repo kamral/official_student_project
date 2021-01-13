@@ -36,25 +36,39 @@
 #     pagination_class = UniversityPagination
 
 
-from .serilaizers import CategorySerializers,GeneralEducationSystemSerializers
+from .serilaizers import CategoryEducationSerializers,GeneralEducationSystemSerializers
 from rest_framework import generics
 from General_education_system.models import\
     General_education_system,Category_education
 
-class CategoryApiView(generics.ListCreateAPIView):
-    queryset =Category_education.objects.all()
-    serializer_class = CategorySerializers
+from rest_framework.viewsets import ModelViewSet
 
-class CategoryUpdateApiView(generics.RetrieveUpdateDestroyAPIView):
+# class CategoryApiView(generics.ListCreateAPIView):
+#     queryset =Category_education.objects.all()
+#     serializer_class = CategorySerializers
+#
+# class CategoryUpdateApiView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Category_education.objects.all()
+#     serializer_class = CategorySerializers
+
+
+class CategoryEducationApiViewset(ModelViewSet):
     queryset = Category_education.objects.all()
-    serializer_class = CategorySerializers
+    serializer_class = CategoryEducationSerializers
 
 
-class GeneralEducationApiView(generics.ListCreateAPIView):
-    queryset = General_education_system.objects.all()
-    serializer_class = GeneralEducationSystemSerializers
 
 
-class GeneralUpdateApiView(generics.RetrieveUpdateDestroyAPIView):
+# class GeneralEducationApiView(generics.ListCreateAPIView):
+#     queryset = General_education_system.objects.all()
+#     serializer_class = GeneralEducationSystemSerializers
+#
+#
+# class GeneralUpdateApiView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = General_education_system.objects.all()
+#     serializer_class = GeneralEducationSystemSerializers
+
+
+class GeneralEducationSystemViewset(ModelViewSet):
     queryset = General_education_system.objects.all()
     serializer_class = GeneralEducationSystemSerializers

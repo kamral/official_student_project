@@ -63,7 +63,7 @@ from General_education_system.models import \
     General_education_system,\
     Category_education
 
-class CategorySerializers(serializers.ModelSerializer):
+class CategoryEducationSerializers(serializers.ModelSerializer):
     name=serializers.CharField()
 
     def create(self, validated_data):
@@ -76,11 +76,11 @@ class CategorySerializers(serializers.ModelSerializer):
         return instance
 
 
-
-
     class Meta:
         model=Category_education
         fields=('name',)
+
+
 
 
 

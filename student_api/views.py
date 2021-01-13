@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from .serializers import StudentRegisterSerializer,\
-    CourseSerializers,FacultySerializers,DirectionSerializers,\
-    Dorm_roomSerializers
+from .serializers import *
 # Create your views here.
 from General_education_system.models import *
 from student.models import *
@@ -15,7 +13,7 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from collections import OrderedDict
-
+from rest_framework.viewsets import ModelViewSet
 
 class StudentRegistrationApiView(generics.CreateAPIView):
     serializer_class = StudentRegisterSerializer
@@ -35,14 +33,28 @@ class StudentRegistrationApiView(generics.CreateAPIView):
         return Response(response, status=status_code)
 
 
-class CourseApiView(generics.ListCreateAPIView):
+
+
+
+#
+# class CourseApiView(generics.ListCreateAPIView):
+#     serializer_class = CourseSerializers
+#     queryset = Course.objects.all()
+
+class CourseApiViewset(ModelViewSet):
     serializer_class = CourseSerializers
     queryset = Course.objects.all()
 
+#
+# class FacultyApiView(generics.ListCreateAPIView):
+#     serializer_class = FacultySerializers
+#     queryset = Faculty.objects.all()
 
-class FacultyApiView(generics.ListCreateAPIView):
+
+class FacultyApiViewset(ModelViewSet):
     serializer_class = FacultySerializers
     queryset = Faculty.objects.all()
+
 
 # создаем пагинаию на уровне модели
 class DirectionPagination(PageNumberPagination):
@@ -58,23 +70,45 @@ class DirectionPagination(PageNumberPagination):
             ('результат', data)
         ]))
 
-class DirectionFacultyApiView(generics.ListCreateAPIView):
+
+
+# class DirectionFacultyApiView(generics.ListCreateAPIView):
+#     serializer_class = DirectionSerializers
+#     queryset = Direction.objects.all()
+#     pagination_class=DirectionPagination
+
+
+class DirectionFacultyAPiViewset(ModelViewSet):
     serializer_class = DirectionSerializers
     queryset = Direction.objects.all()
-    pagination_class=DirectionPagination
+    pagination_class = DirectionPagination
 
 
-class FLoorAPiVIew(generics.ListCreateAPIView):
-    model=Floor
+# class FLoorAPiVIew(generics.ListCreateAPIView):
+#     serializer_class = FLoorSerializers
+#     queryset = Floor.objects.all()
+
+
+class FloorApiViewset(ModelViewSet):
+    serializer_class = FLoorSerializers
     queryset = Floor.objects.all()
 
-class Dorm_buildingApiView(generics.ListCreateAPIView):
-    model=Dorm_building
+
+# class Dorm_buildingApiView(generics.ListCreateAPIView):
+#     serializer_class = Dorm_buildingSerializers
+#     queryset = Dorm_building.objects.all()
+
+class Dorm_buildingApiViewset(ModelViewSet):
+    serializer_class = Dorm_buildingSerializers
     queryset = Dorm_building.objects.all()
 
 
 
-class DoorRoomApiView(generics.ListCreateAPIView):
+
+# class DoorRoomApiView(generics.ListCreateAPIView):
+#     serializer_class = Dorm_roomSerializers
+#     queryset = Dorm_room.objects.all()
+
+class Dorm_roomApiViewset(ModelViewSet):
     serializer_class = Dorm_roomSerializers
     queryset = Dorm_room.objects.all()
-

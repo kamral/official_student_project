@@ -84,3 +84,16 @@ def add_education_system(request):
     else:
         education=General_education_systemForm()
     return render(request, 'add_education_system.html', {'form':education})
+
+
+def get_dorm_building_detail(request,pk):
+    dorm_building=Dorm_building.objects.filter(dorm_room=pk)
+    floor=Floor.objects.filter(dorm_bulding=pk)
+    # General_education_system_door_room_name=General_education_system.objects.get(door_room_name=pk)
+    context={
+        'dorm_building':dorm_building,
+        'floor':floor,
+        # 'General_education_system_door_room_name': General_education_system_door_room_name
+
+    }
+    return render(request,'dorm_room_detail/index.html',context)
