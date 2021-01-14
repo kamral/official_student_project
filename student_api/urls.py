@@ -24,7 +24,7 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 router=DefaultRouter()
 router.register('floor', FloorApiViewset, basename='floor')
-router.register('dorm_building', Dorm_buildingApiViewset, basename='dorm_building')
+# router.register('dorm_building', Dorm_buildingApiViewset, basename='dorm_building')
 router.register('dorm_room', Dorm_roomApiViewset, basename='dorm_room')
 router.register('direction',Dorm_roomApiViewset, basename='direction')
 router.register('faculty', FacultyApiViewset, basename='faculty')

@@ -5,7 +5,9 @@ from student.models import \
     Course, \
     Faculty, \
     Direction, \
-    Room, Dorm_room, Dorm_building, Floor
+    Room, Dorm_room, Floor
+
+    # Dorm_building,
 
 
 class CourseSerializers(serializers.ModelSerializer):
@@ -39,15 +41,15 @@ class RoomSerializers(serializers.ModelSerializer):
         fields=('room_number','student_name','student_photo',)
 
 
-
-class Dorm_buildingSerializers(serializers.ModelSerializer):
-
-    def create(self, validated_data):
-        return Dorm_building.objects.all()
-
-    class Meta:
-        model=Dorm_building
-        fields=('number_building','dorm_room')
+#
+# class Dorm_buildingSerializers(serializers.ModelSerializer):
+#
+#     def create(self, validated_data):
+#         return Dorm_building.objects.all()
+#
+#     class Meta:
+#         model=Dorm_building
+#         fields=('number_building','dorm_room')
 
 
 
@@ -71,7 +73,7 @@ class Dorm_roomSerializers(serializers.ModelSerializer):
 
     class Meta:
         model=Dorm_room
-        fields=('title','address')
+        fields=('title','address','dorm_room')
 
 
 

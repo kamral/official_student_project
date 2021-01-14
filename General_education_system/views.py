@@ -14,7 +14,6 @@ from student.models import Dorm_room
 
 # Create your views here.
 
-
 def index(request):
     about_company_categories = About_Company_Category.objects.all()
     opportunities_categories = Opportunities_category.objects.all()
@@ -63,12 +62,15 @@ def get_education_category(request,pk):
 
 def get_education_detail(request,pk):
     education=get_object_or_404(General_education_system,pk=pk)
-    dorm_room=Dorm_room.objects.get(pk=pk)
+    dorm_room=Dorm_room.objects.filter(pk=pk)
     # dorm_room_drom_building=Dorm_room.dorm_building.through.objects.filter(dorm_room_id=pk)
-    General_education_system_door_room_name=General_education_system.objects.get(door_room_name=pk)
+    General_education_system_door_room_name=General_education_system.objects.filter(door_room_name=pk)
     dorm_building=Dorm_building.objects.filter(dorm_room=pk)
+    floor=Floor.objects.filter(dorm_bulding=pk)
     return render(request, 'category_education_read_more.html',
-                  {'education':education,
+                  {''
+                   'education':education,
+                   'floor': floor,
                    'dorm_room':dorm_room,
                    'dorm_building':dorm_building,
                    # 'dorm_room_drom_building':dorm_room_drom_building,
@@ -87,13 +89,16 @@ def add_education_system(request):
 
 
 def get_dorm_building_detail(request,pk):
+    # education=get_object_or_404(General_education_system,pk=pk)
     dorm_building=Dorm_building.objects.filter(dorm_room=pk)
     floor=Floor.objects.filter(dorm_bulding=pk)
     # General_education_system_door_room_name=General_education_system.objects.get(door_room_name=pk)
     context={
         'dorm_building':dorm_building,
         'floor':floor,
+        # 'education': education,
         # 'General_education_system_door_room_name': General_education_system_door_room_name
 
     }
     return render(request,'dorm_room_detail/index.html',context)
+

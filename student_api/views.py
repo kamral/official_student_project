@@ -98,9 +98,9 @@ class FloorApiViewset(ModelViewSet):
 #     serializer_class = Dorm_buildingSerializers
 #     queryset = Dorm_building.objects.all()
 
-class Dorm_buildingApiViewset(ModelViewSet):
-    serializer_class = Dorm_buildingSerializers
-    queryset = Dorm_building.objects.all()
+# class Dorm_buildingApiViewset(ModelViewSet):
+#     serializer_class = Dorm_buildingSerializers
+#     queryset = Dorm_building.objects.all()
 
 
 
