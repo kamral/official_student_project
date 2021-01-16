@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import get_ourpartners
+# from .views import get_ourpartners
     # home, \
     # get_opportunities_footer,
     # get_about_company_category_footer,\

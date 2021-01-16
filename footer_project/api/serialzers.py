@@ -6,13 +6,8 @@ from footer_project.models import *
 
 
 class AboutCompanySerializers(serializers.ModelSerializer):
-    title=serializers.CharField()
-    body=serializers.CharField()
-    date_of_foundation=serializers.DateTimeField()
-    ceo_manager=serializers.CharField()
-    backend_developer=serializers.CharField()
-    frontent_developer=serializers.CharField()
-    support_service=serializers.CharField()
+
+
     category=serializers.PrimaryKeyRelatedField(queryset=About_Company_Category.objects.all())
 
 
@@ -20,11 +15,14 @@ class AboutCompanySerializers(serializers.ModelSerializer):
         return AboutCompany.objects.all()
 
 
+
+
     class Meta:
         model=AboutCompany
         fields=('title','body','date_of_foundation','ceo_manager',
                 'backend_developer','frontent_developer','support_service',
                 'category',)
+
 
 
 class AboutCompany_CategorySerializers(serializers.ModelSerializer):

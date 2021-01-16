@@ -5,8 +5,8 @@ from .serialzers import \
     OurpartnersSerializers,\
     OportunitiesSerializers,\
     Opportunities_category
-# from rest_framework.generics import\
-#     ListCreateAPIView,\
+from rest_framework.generics import\
+    ListCreateAPIView
 #     RetrieveUpdateDestroyAPIView
 from rest_framework import viewsets
 
@@ -20,25 +20,14 @@ from footer_project.models import \
 
 from rest_framework.viewsets import ModelViewSet
 
-# def home(request):
-#     # categories=Category_education.objects.all()
-#     # about_company_categories=About_Company_Category.objects.all() (путь в templatetags)
-#     # opportunities_categories=Opportunities_category.objects.all() (путь в templatetags)
-#     # ourpartners_category=Ourpartners_category.objects.all()
-#     context={
-#         # 'about_company_categories':about_company_categories,
-#         # 'oportunities_category':opportunities_categories,
-#         # 'ourpartners_category':ourpartners_categoryб
-#         # 'categories': categories,
-#
-#     }
-#     return render(request,'education/base.html',context)
 
 
-# class AboutCompanyApiView(ListCreateAPIView):
-#     serializer_class = AboutCompanySerializers
-#     queryset = AboutCompany.objects.all()
-#
+class AboutCompanyApiView(ListCreateAPIView):
+    serializer_class = AboutCompanySerializers
+    queryset = AboutCompany.objects.all()
+
+
+
 # class AboutCompanyUpdateApiView(RetrieveUpdateDestroyAPIView):
 #     serializer_class = AboutCompanySerializers
 #     queryset = AboutCompany.objects.all()
@@ -47,6 +36,8 @@ from rest_framework.viewsets import ModelViewSet
 class AboutCompanyViewsets(ModelViewSet):
     queryset = AboutCompany.objects.all()
     serializer_class = AboutCompanySerializers
+
+
 
 
 
