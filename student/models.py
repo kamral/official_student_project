@@ -41,9 +41,10 @@ class Room(models.Model):
     student_name=models.CharField(max_length=100)
     # student_name=models.ForeignKey('Student',on_delete=models.CASCADE)
     student_photo=models.ImageField(verbose_name='Фото студента')
+    floor=models.ForeignKey('Floor',on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.room_number
+        return str(self.room_number)
 
     class Meta:
         verbose_name='Номер комнаты'

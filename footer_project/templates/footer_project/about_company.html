@@ -2,7 +2,7 @@
 {%block content%}
 <div class="card">
   <div class="card-body">
-    {%for i in about_company%}
+    {%for i in object_list%}
     <h5 class="card-title" align="center">{{i.title}}</h5>
     <p class="card-text" >{{i.body}}</p>
     <p class="card-text" >{{i.ceo_manager}}</p>
