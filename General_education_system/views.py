@@ -8,6 +8,7 @@ from footer_project.models import \
     Opportunities_category,\
     Oportunities,\
     Ourpartners,Ourpartners_category
+from django.views import generic
 
 from .models import Category_education,General_education_system,Floor,Dorm_building
 from .forms import General_education_systemForm
@@ -30,6 +31,7 @@ def index(request):
 
     }
     return render(request,'education/base.html',context)
+
 
 
 
@@ -64,6 +66,7 @@ def get_education_category(request,pk):
                    })
 
 
+
 def get_education_detail(request,pk):
     education=get_object_or_404(General_education_system,pk=pk)
     dorm_room=Dorm_room.objects.filter(pk=pk)
@@ -81,24 +84,19 @@ def get_education_detail(request,pk):
                    # 'dorm_room_drom_building':dorm_room_drom_building,
                    'General_education_system_door_room_name':General_education_system_door_room_name})
 
-#####################################################################
-#####################################################################
 
-# def add_education_system(request):
-#     if request.method == 'POST':
-#         education=General_education_systemForm(request.POST,
-#                                                request.FILES)
-#         if education.is_valid():
-#             education_system=education.save()
-#             return redirect(education_system)
-#     else:
-#         education=General_education_systemForm()
-#     return render(request, 'add_education_system.html', {'form':education})
 
-class Add_education_system(CreateView):
-    form_class = General_education_systemForm
-    template_name = 'add_education_system.html'
-    success_url =reverse_lazy('home')
+def add_education_system(request):
+    if request.method == 'POST':
+        education=General_education_systemForm(request.POST,
+                                               request.FILES)
+        if education.is_valid():
+            education_system=education.save()
+            return redirect(education_system)
+    else:
+        education=General_education_systemForm()
+    return render(request, 'add_education_system.html', {'form':education})
+
 
 
 def get_dorm_building_detail(request,pk):
